@@ -191,8 +191,8 @@
                 <span class="text-primary fw-bold">All in one solution</span>
                 <h2 class="text-body-secondary">Its time to bring your<br>desire ideas to life</h2>
             </div>
-            <div class="project-carousel position-relative">
-                <div class="project-cards d-flex gap-4">
+            <div class="row">
+                <div class="col-md-4">
                     <div class="project-card">
                         <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/DHU4235.jpeg" alt="">
                         <div class="project-info">
@@ -201,7 +201,9 @@
                             <a href="#" class="text-primary text-decoration-none fw-bold">Read More <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="project-card active-project">
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card">
                         <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/MUTG425.jpeg" alt="">
                         <div class="project-info">
                             <h5 class="fw-bold">Aeroland Protocol</h5>
@@ -209,6 +211,8 @@
                             <a href="#" class="text-primary text-decoration-none fw-bold">Read More <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-4">
                     <div class="project-card">
                         <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/HG2345.jpeg" alt="">
                         <div class="project-info">
@@ -218,8 +222,6 @@
                         </div>
                     </div>
                 </div>
-                <button class="project-control project-prev" type="button" aria-label="Previous"><i class="fa fa-chevron-left"></i></button>
-                <button class="project-control project-next" type="button" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="cta-banner d-flex justify-content-between align-items-center px-5">
                 <h4 class="m-0">Contact Us for<br>any kind of inquiry</h4>
@@ -381,36 +383,6 @@
                     const nextIndex = (activeIndex + 1) % cards.length;
                     updateCards(nextIndex);
                 });
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const projectCards = Array.from(document.querySelectorAll('.project-carousel .project-card'));
-            const prevProject = document.querySelector('.project-prev');
-            const nextProject = document.querySelector('.project-next');
-            let projectIndex = projectCards.findIndex(card => card.classList.contains('active-project'));
-            if (projectIndex === -1) projectIndex = 0;
-
-            function updateProject(index) {
-                projectCards.forEach((card, i) => card.classList.toggle('active-project', i === index));
-                projectCards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                projectIndex = index;
-            }
-
-            if (prevProject && nextProject) {
-                prevProject.addEventListener('click', function() {
-                    const nextIndex = (projectIndex - 1 + projectCards.length) % projectCards.length;
-                    updateProject(nextIndex);
-                });
-
-                nextProject.addEventListener('click', function() {
-                    const nextIndex = (projectIndex + 1) % projectCards.length;
-                    updateProject(nextIndex);
-                });
-            }
-
-            if (projectCards.length) {
-                updateProject(projectIndex);
             }
         });
     </script>

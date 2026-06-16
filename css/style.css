@@ -259,21 +259,12 @@ padding-left: 30px; /* Slight indent hover animation */
 .exp-box h2 { color: white; font-size: 4rem; margin: 0; }
 
 .projects-section { padding: 100px 0; background: #f8f9fa; }
-.project-carousel { position: relative; overflow: hidden; }
-.project-cards { display: flex; gap: 1.5rem; justify-content: flex-start; overflow: hidden; }
-.project-card { background: white; border-radius: 8px; overflow: hidden; position: relative; margin-bottom: 30px; flex: 0 0 950px; min-width: 950px; max-width: 950px; min-height: 550px; }
-.project-card img { width: 100%; height: 550px; object-fit: cover; display: block; }
-.project-card.active-project { transform: scale(1.02); box-shadow: 0 20px 45px rgba(0,0,0,0.18); }
-.project-info { position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(255,255,255,0.95); padding: 16px; border-radius: 8px; }
-.project-info h5 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-.project-info p { font-size: 0.95rem; line-height: 1.5; margin-bottom: 0.75rem; }
-.project-info a { font-size: 0.85rem; }
-.project-control { position: absolute; top: 50%; transform: translateY(-50%); width: 3rem; height: 3rem; border-radius: 50%; border: 2px solid #ffffff; background: #005DE0; color: white; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2; }
-.project-prev { left: 0.75rem; }
-.project-next { right: 0.75rem; }
-.project-control:hover { background: #003f9d; }
+.project-card { background: white; border-radius: 8px; overflow: hidden; position: relative; margin-bottom: 30px; }
+.project-card img { width: 100%; height: 250px; object-fit: cover; }
+.project-info { position: absolute; bottom: 20px; left: 20px; right: 20px; background: white; padding: 20px; border-radius: 8px; }
 
-.cta-banner {     background: #110D1B; 
+.cta-banner { 
+    background: #110D1B; 
     padding: 50px 0; 
     color: white; 
     border-radius: 8px; 
@@ -289,10 +280,9 @@ padding-left: 30px; /* Slight indent hover animation */
 .testi-card.active-card { background: #005DE0; color: white; border: 2px solid #005DE0; box-shadow: 0 12px 36px rgba(0,0,0,0.12); }
 .testi-card.active-card h5, .testi-card.active-card p, .testi-card.active-card small { color: white; }
 .testi-card .client-avatar { width: 55px; height: 55px; border-radius: 50%; margin-right: 18px; object-fit: cover; }
-.testimonial-carousel { position: relative; overflow: hidden; }
-.testimonial-cards { display: flex; gap: 1.5rem; justify-content: flex-start; overflow: hidden; padding-bottom: 1rem; }
-.testi-card { flex: 0 0 380px; max-width: 380px; }
-.testi-card.active-card { transform: scale(1.02); }
+.testimonial-carousel { position: relative; }
+.testimonial-cards { display: flex; gap: 1.5rem; justify-content: space-between; }
+.testi-card { flex: 1 1 calc((100% - 3rem) / 3); max-width: calc((100% - 3rem) / 3); }
 .testimonial-control {
     position: absolute;
     top: 50%;
