@@ -37,7 +37,7 @@ a.btn-theme:hover, a.btn-theme:active { background-color: var(--btn-hover) !impo
     transition: color 0.3s ease; 
 }
 
-/* Hover effect for text */
+
 .navbar-custom .nav-link:hover, 
 .navbar-custom .nav-item.show .nav-link { 
     color: #005DE0 !important; 
