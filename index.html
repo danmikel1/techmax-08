@@ -6,10 +6,9 @@
     <title>Techmax Replica</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
 
@@ -25,7 +24,7 @@
             
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown ">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">HOME</a>
                         <ul class="dropdown-menu border-top border-primary border-2">
                             <li><a class="dropdown-item" href="#">Main Home</a></li>
@@ -124,6 +123,7 @@
                 </div>
                 <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
                     <div class="d-flex align-items-center mb-3">
+                        <span class="vertical-bar"></span>
                         <span class="text-primary fw-bold text-uppercase tracking-wider">WHO WE ARE</span>
                     </div>
                     <h2 class="display-4 mb-4 fw-bold">Quality & Experience IT Solutions Company from southenpark</h2>
@@ -186,48 +186,59 @@
     </section>
 
     <section class="projects-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="text-primary fw-bold">All in one solution</span>
-                <h2 class="text-body-secondary">Its time to bring your<br>desire ideas to life</h2>
+        <div class="container mb-5">
+            <div class="text-center">
+                <span class="text-primary fw-bold text-uppercase">All in one solution</span>
+                <h2 class="text-body-secondary fw-bold">Its time to bring your<br>desire ideas to life</h2>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/DHU4235.jpeg" alt="Product Design">
-                        <div class="project-info">
-                            <h5 class="fw-bold">Product Design</h5>
-                            <p class="m-0 text-body-secondary">Accelerate innovation with world-class tech teams</p>
-                            <a href="#" class="text-primary text-decoration-none fw-bold">Read More <i class="fa fa-arrow-right"></i></a>
-                        </div>
+        </div>
+
+        <div class="custom-slider-container">
+            <div class="custom-slider-track" id="projectSliderTrack">
+                <div class="project-card">
+                    <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/HG2345.jpeg" alt="Analytic Solutions">
+                    <div class="project-info">
+                        <h3 class="fw-bold">Analytic Solutions</h3>
+                        <p class="text-body-secondary">Accelerate innovation with world-class tech teams</p>
+                        <a href="#" class="btn-theme blue mt-auto">Read More <i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/MUTG425.jpeg" alt="Aeroland Protocol">
-                        <div class="project-info">
-                            <h5 class="fw-bold">Aeroland Protocol</h5>
-                            <p class="m-0 text-body-secondary">Accelerate innovation with world-class tech teams</p>
-                            <a href="#" class="text-primary text-decoration-none fw-bold">Read More <i class="fa fa-arrow-right"></i></a>
-                        </div>
+                <div class="project-card active-card">
+                    <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/DHU4235.jpeg" alt="Product Design">
+                    <div class="project-info">
+                        <h3 class="fw-bold">Product Design</h3>
+                        <p class="text-body-secondary">Accelerate innovation with world-class tech teams</p>
+                        <a href="#" class="btn-theme blue mt-auto">Read More <i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/HG2345.jpeg" alt="Analytic Solutions">
-                        <div class="project-info">
-                            <h5 class="fw-bold">Analytic Solutions</h5>
-                            <p class="m-0 text-body-secondary">Accelerate innovation with world-class tech teams</p>
-                            <a href="#" class="text-primary text-decoration-none fw-bold">Read More <i class="fa fa-arrow-right"></i></a>
-                        </div>
+                <div class="project-card">
+                    <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/MUTG425.jpeg" alt="Aeroland Protocol">
+                    <div class="project-info">
+                        <h3 class="fw-bold">Aeroland Protocol</h3>
+                        <p class="text-body-secondary">Accelerate innovation with world-class tech teams</p>
+                        <a href="#" class="btn-theme blue mt-auto">Read More <i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/01/DHU4235.jpeg" alt="Product Design">
+                    <div class="project-info">
+                        <h3 class="fw-bold">Product Design</h3>
+                        <p class="text-body-secondary">Accelerate innovation with world-class tech teams</p>
+                        <a href="#" class="btn-theme blue mt-auto">Read More <i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </div>
+
+            <button class="slider-btn prev-btn" id="sliderPrev"><i class="bi bi-arrow-left"></i></button>
+            <button class="slider-btn next-btn" id="sliderNext"><i class="bi bi-arrow-right"></i></button>
+        </div>
+
+        <div class="container mt-5">
             <div class="cta-banner d-flex justify-content-between align-items-center px-5">
-                <h4 class="m-0">Contact Us for<br>any kind of inquiry</h4>
-                <a href="tel:+3655540069" class="d-flex align-items-center gap-3">
-                    <div style="background:#005DE0; padding:15px; border-radius:50%;"><i class="fa fa-phone"></i></div>
-                    <h3 class="m-0">+36 55 540 069</h3>
+                <h4 class="m-0 text-white">Contact Us for<br>any kind of inquiry</h4>
+                <a href="tel:+3655540069" class="d-flex align-items-center gap-3 text-white">
+                    <div style="background:#005DE0; padding:15px; border-radius:50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;"><i class="fa fa-phone"></i></div>
+                    <h3 class="m-0 fw-bold">+36 55 540 069</h3>
                 </a>
             </div>
         </div>
@@ -271,7 +282,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Controls removed: static testimonial layout - middle card stays active -->
             </div>
         </div>
     </section>
@@ -354,5 +364,48 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script >
+        document.addEventListener('DOMContentLoaded', () => {
+        const track = document.getElementById('projectSliderTrack');
+        const container = document.querySelector('.custom-slider-container');
+        const cards = Array.from(document.querySelectorAll('.project-card'));
+        const prevBtn = document.getElementById('sliderPrev');
+        const nextBtn = document.getElementById('sliderNext');
+        
+        let currentIndex = 1;
+        let cardWidth = cards[0].offsetWidth;
+
+        function updateSlider() {
+            cardWidth = cards[0].offsetWidth;
+            
+            cards.forEach((card, index) => {
+                if (index === currentIndex) {
+                    card.classList.add('active-card');
+                } else {
+                    card.classList.remove('active-card');
+                }
+            });
+            
+            const containerWidth = container.clientWidth;
+            const activeCardOffset = currentIndex * cardWidth;
+            const translateX = (containerWidth / 2) - activeCardOffset - (cardWidth / 2);
+            
+            track.style.transform = `translateX(${translateX}px)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+
+        window.addEventListener('resize', updateSlider);
+        updateSlider();
+    });
+    </script>
 </body>
 </html>
