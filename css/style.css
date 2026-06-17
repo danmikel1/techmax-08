@@ -608,13 +608,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--primary-font); color: var(--heading-
     object-fit: cover; 
 }
 
-@media (max-width: 991.98px) {
-    .testimonial-cards { flex-wrap: nowrap; overflow-x: auto; }
-    .testi-card { min-width: 280px; flex: 0 0 auto; }
-    .project-card { height: 450px; }
-    .custom-carousel-btn.carousel-control-prev { left: 10px; }
-    .custom-carousel-btn.carousel-control-next { right: 10px; }
-}
+
 
 .faq-form-section { padding: 100px 0; background: #F2F2F2; }
 .accordion-button:not(.collapsed) { background-color: #005DE0; color: white; }
@@ -626,6 +620,18 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--primary-font); color: var(--heading-
 }
 
 @media (max-width: 991.98px) {
+    .testimonial-cards { 
+        flex-wrap: nowrap !important; 
+        overflow: visible !important;
+    }
+    .testi-card { 
+        min-width: unset !important;
+        width: 320px;
+        flex: 0 0 320px !important; 
+    }
+    .project-card { height: 450px; }
+    .custom-carousel-btn.carousel-control-prev { left: 10px; }
+    .custom-carousel-btn.carousel-control-next { right: 10px; }
     .hero-section { padding: 120px 0; }
     .hero-title { font-size: 3.5rem; }
     .hero-content-box { padding: 40px 50px; border-width: 5px; }
@@ -635,7 +641,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--primary-font); color: var(--heading-
 @media (max-width: 767.98px) {
     .hero-section { padding: 90px 0; }
     .hero-title { font-size: 2.5rem; padding: 20px 30px; }
-    .hero-content-box { display: block; width: auto; padding: 30px 24px; border-width: 4px; }
+    .hero-content-box { display: block; width: 90%; max-width: 500px; margin: 0 auto; padding: 30px 24px; border-width: 4px; }
+    
     .hero-content-box::after { width: 70px; height: 70px; top: -30px; right: -30px; }
     .feature-item { flex-direction: row; gap: 12px; }
     .feature-number { font-size: 1.1rem; }
@@ -645,21 +652,29 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--primary-font); color: var(--heading-
 
 @media (max-width: 575.98px) {
     .hero-section { padding: 60px 0; }
-    .hero-title { font-size: 2rem; padding: 12px 18px; }
-    .hero-content-box { padding: 18px 16px; border-width: 3px; }
+    .hero-title { font-size: 1.8rem; padding: 12px 18px; word-wrap: break-word; }
+    
+    .hero-content-box { padding: 18px 16px; border-width: 3px; width: 95%; }
     .hero-content-box::after { width: 56px; height: 56px; top: -24px; right: -24px; }
+    
     .feature-item { flex-direction: column; align-items: flex-start; gap: 6px; }
     .feature-number { font-size: 1rem; }
-    .project-card img { height: auto; }
-    .play-btn { top: 45%; left: 45%; width: 56px; height: 56px; font-size: 18px; }
-    .project-card { height: 400px; }
+    
+    /* Project Card Fix: Forces vertical alignment */
+    .project-card { height: auto; min-height: 350px; }
+    .project-card img { height: 350px; }
+    
     .project-info { 
-        width: calc(100% - 40px); 
-        height: auto; 
-        bottom: 20px; 
-        left: 20px; 
-        padding: 20px; 
+        position: relative;
+        bottom: 0; 
+        left: 0; 
+        width: 100%; 
+        padding: 20px;
+        box-shadow: none;
+        border-top: 1px solid #eee;
     }
+    
+    .play-btn { top: 50%; left: 50%; width: 50px; height: 50px; font-size: 16px; }
 }
 
 .custom-slider-track, 
@@ -676,6 +691,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--primary-font); color: var(--heading-
     -webkit-backface-visibility: hidden;
     transform: translateZ(0) scale(0.95); 
     visibility: hidden; 
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    opacity: 0;
 }
 
 .testi-card.active-card {

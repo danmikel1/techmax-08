@@ -432,21 +432,14 @@
                 let isTransitioning = false;
 
                 function updateSlider(animate = true) {
-                    // Render Window Logic: Only show the active card and its direct neighbors
+                    
                     cards.forEach((card, index) => {
                         const isActive = index === currentIndex;
                         const isNeighbor = index === currentIndex - 1 || index === currentIndex + 1;
                         
                         card.classList.toggle('active-card', isActive);
-                        
-                        if (isActive || isNeighbor) {
-                            card.style.visibility = 'visible';
-                            // We only apply the 0.7 opacity to neighbors, not off-screen cards
-                            card.style.opacity = isActive ? '1' : '0.7'; 
-                        } else {
-                            card.style.visibility = 'hidden';
-                            card.style.opacity = '0';
-                        }
+                        card.style.visibility = 'visible'; 
+                        card.style.opacity = (isActive || isNeighbor) ? (isActive ? '1' : '0.7') : '0';
                     });
 
                     const activeCard = cards[currentIndex];
