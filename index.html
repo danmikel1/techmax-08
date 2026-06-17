@@ -249,8 +249,10 @@
             <div class="text-center mb-5">
                 <h2 class="fw-bold fs-1">20k+ clients <span class="text-primary">love our service & IT</span><br>related solutions</h2>
             </div>
-            <div class="testimonial-carousel position-relative">
-                <div class="testimonial-cards d-flex gap-4 justify-content-between">
+            
+            <div class="testimonial-carousel position-relative" style="overflow: hidden;">
+                
+                <div class="testimonial-cards d-flex gap-4" id="testimonialTrack" style="width: max-content; align-items: center;">
                     <div class="testi-card">
                         <div class="imgCOntainer">
                             <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/02/HOS863.png" alt="Quote" class="testimonial-quote-img">
@@ -261,6 +263,7 @@
                             <div><h5 class="m-0 fw-bold">James Smith</h5><small>CFO Apple Corp</small></div>
                         </div>
                     </div>
+                    
                     <div class="testi-card active-card">
                         <div class="imgCOntainer">
                             <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/02/HOS863.png" alt="Quote" class="testimonial-quote-img">
@@ -271,6 +274,7 @@
                             <div><h5 class="m-0 fw-bold">John Dowson</h5><small>Developer</small></div>
                         </div>
                     </div>
+                    
                     <div class="testi-card">
                         <div class="imgCOntainer">
                             <img src="https://devthrow.com/wp/techmax/wp-content/uploads/2022/02/HOS863.png" alt="Quote" class="testimonial-quote-img">
@@ -282,6 +286,9 @@
                         </div>
                     </div>
                 </div>
+
+                <button class="slider-btn prev-btn" id="testiPrev"><i class="bi bi-arrow-left"></i></button>
+                <button class="slider-btn next-btn" id="testiNext"><i class="bi bi-arrow-right"></i></button>
             </div>
         </div>
     </section>
@@ -364,48 +371,105 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script >
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-        const track = document.getElementById('projectSliderTrack');
-        const container = document.querySelector('.custom-slider-container');
-        const cards = Array.from(document.querySelectorAll('.project-card'));
-        const prevBtn = document.getElementById('sliderPrev');
-        const nextBtn = document.getElementById('sliderNext');
-        
-        let currentIndex = 1;
-        let cardWidth = cards[0].offsetWidth;
+            function initInfiniteSlider(trackId, cardSelector, prevBtnId, nextBtnId) {
+                const track = document.getElementById(trackId);
+                if (!track) return;
 
-        function updateSlider() {
-            cardWidth = cards[0].offsetWidth;
-            
-            cards.forEach((card, index) => {
-                if (index === currentIndex) {
-                    card.classList.add('active-card');
-                } else {
-                    card.classList.remove('active-card');
+                let cards = Array.from(track.querySelectorAll(cardSelector));
+                const prevBtn = document.getElementById(prevBtnId);
+                const nextBtn = document.getElementById(nextBtnId);
+                const container = track.parentElement;
+
+                const firstClone = cards[0].cloneNode(true);
+                const lastClone = cards[cards.length - 1].cloneNode(true);
+
+                firstClone.classList.remove('active-card');
+                lastClone.classList.remove('active-card');
+
+                track.appendChild(firstClone);
+                track.insertBefore(lastClone, cards[0]);
+
+                cards = Array.from(track.querySelectorAll(cardSelector));
+                
+                let currentIndex = 1; 
+                let isTransitioning = false;
+
+                function updateSlider(animate = true) {
+                    // Render Window Logic: Only show the active card and its direct neighbors
+                    cards.forEach((card, index) => {
+                        const isActive = index === currentIndex;
+                        const isNeighbor = index === currentIndex - 1 || index === currentIndex + 1;
+                        
+                        card.classList.toggle('active-card', isActive);
+                        
+                        if (isActive || isNeighbor) {
+                            card.style.visibility = 'visible';
+                            // We only apply the 0.7 opacity to neighbors, not off-screen cards
+                            card.style.opacity = isActive ? '1' : '0.7'; 
+                        } else {
+                            card.style.visibility = 'hidden';
+                            card.style.opacity = '0';
+                        }
+                    });
+
+                    const activeCard = cards[currentIndex];
+                    const containerCenter = container.clientWidth / 2;
+                    const activeCardCenter = activeCard.offsetLeft + (activeCard.offsetWidth / 2);
+                    const translateX = containerCenter - activeCardCenter;
+
+                    // Handle the animation and force DOM reflow to prevent flickering
+                    if (!animate) {
+                        track.style.transition = 'none';
+                        track.style.transform = `translateX(${translateX}px)`;
+                        void track.offsetWidth; // MAGIC BULLET: Forces browser to repaint instantly
+                    } else {
+                        track.style.transition = 'transform 0.4s ease-in-out';
+                        track.style.transform = `translateX(${translateX}px)`;
+                    }
                 }
-            });
-            
-            const containerWidth = container.clientWidth;
-            const activeCardOffset = currentIndex * cardWidth;
-            const translateX = (containerWidth / 2) - activeCardOffset - (cardWidth / 2);
-            
-            track.style.transform = `translateX(${translateX}px)`;
-        }
 
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
-            updateSlider();
+                track.addEventListener('transitionend', (e) => {
+                    if (e.propertyName !== 'transform') return;
+                    isTransitioning = false;
+                    
+                    // Invisible snap back to the original elements
+                    if (currentIndex === 0) {
+                        currentIndex = cards.length - 2;
+                        updateSlider(false);
+                    } else if (currentIndex === cards.length - 1) {
+                        currentIndex = 1;
+                        updateSlider(false);
+                    }
+                });
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        if (isTransitioning) return;
+                        isTransitioning = true;
+                        currentIndex--;
+                        updateSlider(true);
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        if (isTransitioning) return;
+                        isTransitioning = true;
+                        currentIndex++;
+                        updateSlider(true);
+                    });
+                }
+
+                window.addEventListener('resize', () => updateSlider(false));
+                
+                setTimeout(() => updateSlider(false), 50); 
+            }
+
+            initInfiniteSlider('projectSliderTrack', '.project-card', 'sliderPrev', 'sliderNext');
+            initInfiniteSlider('testimonialTrack', '.testi-card', 'testiPrev', 'testiNext');
         });
-
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
-            updateSlider();
-        });
-
-        window.addEventListener('resize', updateSlider);
-        updateSlider();
-    });
     </script>
 </body>
 </html>
