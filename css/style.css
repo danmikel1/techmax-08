@@ -14,27 +14,20 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--primary-font); color: var(--heading-
     -webkit-text-stroke: 1.5px currentColor;
 }
 
-.navbar-custom a.btn-theme.blue,
-.hero-section a.btn-theme.blue,
-.about-section a.btn-theme.blue{
+.navbar-custom a.btn-theme.blue{
     background-color: #005DE0;
     color: #ffffff;
-    min-width: 150px;
-    padding: 10px 10px;
+    padding: 15px 43px;
     display: inline-block;
     text-align: center;
     position: relative;
     overflow: hidden;
     border-radius: 4px;
     text-decoration: none;
-    border: 2px solid #005DE0;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar-custom a.btn-theme.blue:hover,
-.hero-section a.btn-theme.blue:hover,
-.about-section a.btn-theme.blue:hover{
-    background-color: #ffffff;
+.navbar-custom a.btn-theme.blue:hover{
     color: #005DE0 !important;
 }
 
@@ -77,19 +70,34 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--primary-font); color: var(--heading-
 .hero-section {
     background: url('https://devthrow.com/wp/techmax/wp-content/uploads/2023/06/TEC038.png') bottom left no-repeat,
                 linear-gradient(135deg, #050d26 0%, #1557c0 100%);
-    background-size: auto, cover; padding: 180px 0; color: white; position: relative;
+    background-size: auto, cover; 
+    padding: 180px 0; 
+    color: white; 
+    position: relative;
+    isolation: isolate;
 }
 
 .hero-content-box {
-    position: relative; display: inline-block; padding: 60px 80px; border: 6px solid #ffffff; z-index: 0; overflow: visible;
+    position: relative; 
+    display: inline-block; 
+    padding: 60px 80px; 
+    border: 6px solid #ffffff; 
+    overflow: visible;
 }
 
 .hero-title { font-size: 6rem; color: white; font-weight: 700; line-height: 1.1; margin: 0; position: relative; display: inline-block; padding: 40px 60px; z-index: 1; }
 .hero-subtitle { font-size: 1.25rem; color: #e0e0e0; }
 
 .hero-content-box::after {
-    content: ''; position: absolute; top: -45px; right: -45px; width: 90px; height: 90px;
-    background: linear-gradient(135deg, #005DE0 0%, #ffffff 100%); border-radius: 50%; z-index: -1;
+    content: ''; 
+    position: absolute; 
+    top: -45px; 
+    right: -45px; 
+    width: 100px; 
+    height: 100px;
+    background: linear-gradient(135deg, #005DE0 0%, #ffffff 100%); 
+    border-radius: 50%; 
+    z-index: -1;
     animation: sizePulse 5s ease-in-out infinite;
 }
 
@@ -192,10 +200,47 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--primary-font); color: var(--heading-
 .services-dark { background-color: var(--theme-bg-dark); padding: 80px 0 40px; color: white; }
 .services-dark .section-subtitle { color: #005DE0; }
 .services-dark h2 { color: white; }
-.service-card-dark { background: #1a1625; padding: 30px; border-radius: 8px; display: flex; align-items: center; gap: 20px; transition: 0.3s; text-decoration: none; color: white; margin-bottom: 20px;}
-.service-card-dark:hover { background: var(--btn-hover); color: white; }
-.service-card-dark img { height: 40px; }
-.service-card-dark h3 { font-size: 1.2rem; margin: 0; color: white; flex-grow: 1; }
+
+.service-card-dark { 
+    background: #1a1625; 
+    padding: 30px; 
+    border-radius: 8px; 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    transition: background-color 0.3s ease; 
+    text-decoration: none; 
+    color: white; 
+    margin-bottom: 20px;
+}
+
+.service-card-dark img { 
+    height: 40px; 
+}
+
+.service-card-dark h3 { 
+    font-size: 1.2rem; 
+    margin: 0; 
+    color: white; 
+    flex-grow: 1;
+    transition: color 0.3s ease;
+}
+
+.service-card-dark i {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+}
+
+.service-card-dark:hover h3,
+.service-card-dark:hover i {
+    color: #005DE0;
+}
+
+.service-card-dark:hover i {
+    transform: translateX(8px);
+}
 
 .counters-section { background: linear-gradient(to bottom, #ffffff 50%, #f2f2f2 50%); }
 .counter-box { background: white; padding: 40px 20px; text-align: center; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
